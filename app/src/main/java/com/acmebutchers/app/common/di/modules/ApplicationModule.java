@@ -8,7 +8,9 @@ import com.acmebutchers.app.common.executor.JobExecutor;
 import com.acmebutchers.app.common.executor.PostExecutionThread;
 import com.acmebutchers.app.common.executor.ThreadExecutor;
 import com.acmebutchers.app.common.executor.UIThread;
+import com.acmebutchers.app.data.repository.HomeDataRepository;
 import com.acmebutchers.app.data.repository.remote.APIService;
+import com.acmebutchers.app.domain.repository.HomeRepository;
 
 import javax.inject.Singleton;
 
@@ -55,5 +57,11 @@ public class ApplicationModule {
   @Singleton
   APIService provideApiService() {
     return APIService.Creator.newAPIService();
+  }
+
+  @Provides
+  @Singleton
+  HomeRepository provideHomeRepository(HomeDataRepository homeDataRepository) {
+    return homeDataRepository;
   }
 }

@@ -6,6 +6,7 @@ import com.acmebutchers.app.common.di.ApplicationContext;
 import com.acmebutchers.app.common.di.modules.ApplicationModule;
 import com.acmebutchers.app.common.executor.PostExecutionThread;
 import com.acmebutchers.app.common.executor.ThreadExecutor;
+import com.acmebutchers.app.data.repository.HomeDataRepository;
 import com.acmebutchers.app.data.repository.remote.APIService;
 import com.acmebutchers.app.presentation.base.BaseActivity;
 import com.acmebutchers.app.presentation.navigation.Navigator;
@@ -34,4 +35,6 @@ public interface ApplicationComponent {
   APIService apiService();
 
   Navigator navigator();
+
+  HomeDataRepository homeDataRepository();
 }
