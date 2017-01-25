@@ -35,6 +35,9 @@ public class MainActivity extends BaseActivity implements HasComponent<MainCompo
     ButterKnife.bind(this);
     initializeInjector();
     setSupportActionBar(toolbar);
+    if (savedInstanceState == null) {
+      addFragment(R.id.fragmentContainer, MainFragment.newInstance());
+    }
   }
 
   private void initializeInjector() {
