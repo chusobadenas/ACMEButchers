@@ -36,8 +36,7 @@ public class BasePresenter<T extends MvpView> implements Presenter<T> {
   }
 
   public void showErrorMessage(ErrorBundle errorBundle) {
-    String errorMessage = ErrorMessageFactory.create(mvpView.context(), errorBundle.getException());
-    mvpView.showError(errorMessage);
+    mvpView.showError(errorBundle.getErrorMessage());
   }
 
   private static class MvpViewNotAttachedException extends RuntimeException {
