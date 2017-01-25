@@ -11,8 +11,8 @@ import rx.Observable;
 
 public class GetHomeImages extends UseCase {
 
-  private static final String MEAT_TAG = "meat";
   private static final String BUTCHER_SHOP = "Butcher shop";
+  private static final String[] TAGS = {"meat"};
 
   private final HomeRepository homeRepository;
 
@@ -25,6 +25,6 @@ public class GetHomeImages extends UseCase {
 
   @Override
   public Observable buildUseCaseObservable(Object... param) {
-    return homeRepository.getImageUrls(BUTCHER_SHOP, new String[]{MEAT_TAG});
+    return homeRepository.getImageUrls(BUTCHER_SHOP, TAGS);
   }
 }
