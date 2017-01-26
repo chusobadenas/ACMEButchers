@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "367400856487",
+    "firebase_url": "https://molten-precinct-156815.firebaseio.com",
+    "project_id": "molten-precinct-156815",
+    "storage_bucket": "molten-precinct-156815.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:367400856487:android:20a2503edbd79e62",
+        "android_client_info": {
+          "package_name": "com.acmebutchers.app"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "367400856487-puuu1fvuh8n1bjm1tj4kc82j9t1f4g3i.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.acmebutchers.app",
+            "certificate_hash": "BA9A0D4A66C3C5A69046B55E5330627F7789813C"
+          }
+        },
+        {
+          "client_id": "367400856487-nd3kr8jngn1a0b2t61sn56bsb0re3aup.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDUBOw9A8_klQuiGMHdMyMfmtUDXBBc8RM"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "367400856487-nd3kr8jngn1a0b2t61sn56bsb0re3aup.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
