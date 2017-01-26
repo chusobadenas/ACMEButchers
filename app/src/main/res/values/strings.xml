@@ -1,11 +1,31 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-  <string name="app_name">ACMEButchers</string>
+  <string name="app_name">ACME Butchers</string>
 
   <!-- Error messages -->
   <string name="exception_message_generic">There was an application error</string>
   <string name="error_loading_images">There was an error loading the images</string>
 
-  <!-- Other -->
+  <!-- Main -->
+  <string name="main_intro_title">INTRO</string>
+  <string name="main_intro_description">At ACME butchers we offer you the best meats, sausages
+    and prepared dishes.</string>
+  <string name="main_delivery_title">Home delivery</string>
+  <string name="main_delivery_description">Place your order today and have it ready at home
+    by tomorrow.</string>
+  <string name="main_cut_title">Traditional cut</string>
+  <string name="main_cut_description">Our cut is artisan and traditional.</string>
+  <string name="main_quality_title">Quality</string>
+  <string name="main_quality_description">Meat with quality from the Pyrenean valleys.</string>
+  <string name="main_service_title">24h Service</string>
+  <string name="main_service_description">We guarantee that we will comply in 24h with our
+    commitments.</string>
+  <string name="main_restoration_title">Restoration</string>
+  <string name="main_restoration_description">We serve the best restaurants.</string>
+  <string name="main_butcher_title">Butcher shop</string>
+  <string name="main_butcher_description">The best pieces of Iberian ham and traditional
+    sausages.</string>
+
+  <!-- Retry -->
   <string name="btn_text_retry">Retry</string>
 </resources>
