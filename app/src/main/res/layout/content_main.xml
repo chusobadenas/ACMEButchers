@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fitsSystemWindows="true">
+
+  <LinearLayout
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:gravity="center"
+      android:orientation="vertical"
+      android:paddingBottom="@dimen/default_horizontal_margin"
+      android:paddingEnd="@dimen/default_vertical_margin"
+      android:paddingStart="@dimen/default_vertical_margin"
+      android:paddingTop="@dimen/default_horizontal_margin">
+
+    <TextView
+        style="@style/MyAppTheme.TextViewTitle"
+        android:text="@string/main_intro_title"/>
+
+    <TextView
+        style="@style/MyAppTheme.TextViewBlock"
+        android:text="@string/main_intro_description"/>
+
+    <TextView
+        style="@style/MyAppTheme.TextViewTitle"
+        android:text="@string/main_delivery_title"/>
+
+    <TextView
+        style="@style/MyAppTheme.TextViewBlock"
+        android:text="@string/main_delivery_description"/>
+
+    <TextView
+        style="@style/MyAppTheme.TextViewTitle"
+        android:text="@string/main_cut_title"/>
+
+    <TextView
+        style="@style/MyAppTheme.TextViewBlock"
+        android:text="@string/main_cut_description"/>
+
+    <TextView
+        style="@style/MyAppTheme.TextViewSubtitle"
+        android:text="@string/main_quality_title"/>
+
+    <ImageView
+        android:id="@+id/main_quality_image"
+        android:layout_width="@dimen/image_default_size"
+        android:layout_height="@dimen/image_default_size"
+        android:contentDescription="@string/main_quality_description"/>
+
+    <TextView
+        style="@style/MyAppTheme.TextViewBlock"
+        android:text="@string/main_quality_description"/>
+
+    <TextView
+        style="@style/MyAppTheme.TextViewSubtitle"
+        android:text="@string/main_service_title"/>
+
+    <ImageView
+        android:id="@+id/main_service_image"
+        android:layout_width="@dimen/image_default_size"
+        android:layout_height="@dimen/image_default_size"
+        android:contentDescription="@string/main_service_description"/>
+
+    <TextView
+        style="@style/MyAppTheme.TextViewBlock"
+        android:text="@string/main_service_description"/>
+
+    <TextView
+        style="@style/MyAppTheme.TextViewSubtitle"
+        android:text="@string/main_restoration_title"/>
+
+    <ImageView
+        android:id="@+id/main_restoration_image"
+        android:layout_width="@dimen/image_default_size"
+        android:layout_height="@dimen/image_default_size"
+        android:contentDescription="@string/main_restoration_description"/>
+
+    <TextView
+        style="@style/MyAppTheme.TextViewBlock"
+        android:text="@string/main_restoration_description"/>
+
+    <TextView
+        style="@style/MyAppTheme.TextViewSubtitle"
+        android:text="@string/main_butcher_title"/>
+
+    <ImageView
+        android:id="@+id/main_butcher_image"
+        android:layout_width="@dimen/image_default_size"
+        android:layout_height="@dimen/image_default_size"
+        android:contentDescription="@string/main_butcher_description"/>
+
+    <TextView
+        style="@style/MyAppTheme.TextViewBlock"
+        android:text="@string/main_butcher_description"/>
+  </LinearLayout>
+</ScrollView>
