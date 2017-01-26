@@ -14,7 +14,7 @@ public abstract class Photos {
   public abstract Integer page();
 
   @SerializedName("pages")
-  public abstract String pages();
+  public abstract Integer pages();
 
   @SerializedName("perpage")
   public abstract Integer perPage();
@@ -25,7 +25,7 @@ public abstract class Photos {
   @SerializedName("photo")
   public abstract List<PhotoId> photos();
 
-  public static Photos create(Integer page, String pages, Integer perPage, String total,
+  public static Photos create(Integer page, Integer pages, Integer perPage, String total,
                               List<PhotoId> photos) {
     return new AutoValue_Photos(page, pages, perPage, total, photos);
   }

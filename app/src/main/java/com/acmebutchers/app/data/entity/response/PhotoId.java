@@ -14,8 +14,18 @@ public abstract class PhotoId {
   @SerializedName("owner")
   public abstract String owner();
 
-  public static PhotoId create(String id, String owner) {
-    return new AutoValue_PhotoId(id, owner);
+  @SerializedName("secret")
+  public abstract String secret();
+
+  @SerializedName("server")
+  public abstract String server();
+
+  @SerializedName("farm")
+  public abstract Integer farm();
+
+  public static PhotoId create(String id, String owner, String secret, String server, Integer
+      farm) {
+    return new AutoValue_PhotoId(id, owner, secret, server, farm);
   }
 
   public static TypeAdapter<PhotoId> typeAdapter(Gson gson) {
