@@ -1,9 +1,9 @@
 package com.acmebutchers.app.presentation.base;
 
-import android.app.Fragment;
-import android.app.FragmentManager;
-import android.app.FragmentTransaction;
 import android.os.Bundle;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
 import android.view.MenuItem;
 
@@ -34,8 +34,8 @@ public abstract class BaseActivity extends AppCompatActivity {
    * @param containerViewId The container view to where add the fragment.
    * @param fragment        The fragment to be added.
    */
-  protected void addFragment(int containerViewId, Fragment fragment) {
-    FragmentTransaction fragmentTransaction = this.getFragmentManager().beginTransaction();
+  public void addFragment(int containerViewId, Fragment fragment) {
+    FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
     fragmentTransaction.add(containerViewId, fragment);
     fragmentTransaction.commit();
   }
@@ -46,8 +46,8 @@ public abstract class BaseActivity extends AppCompatActivity {
    * @param containerViewId The container view to where replace the fragment.
    * @param fragment        The fragment to be added.
    */
-  protected void replaceFragment(int containerViewId, Fragment fragment) {
-    FragmentTransaction fragmentTransaction = this.getFragmentManager().beginTransaction();
+  public void replaceFragment(int containerViewId, Fragment fragment) {
+    FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
     fragmentTransaction.replace(containerViewId, fragment);
     fragmentTransaction.commit();
   }
@@ -57,7 +57,7 @@ public abstract class BaseActivity extends AppCompatActivity {
    *
    * @return {@link com.acmebutchers.app.common.di.components.ApplicationComponent}
    */
-  protected ApplicationComponent getApplicationComponent() {
+  public ApplicationComponent getApplicationComponent() {
     return ((AndroidApplication) getApplication()).getComponent();
   }
 
@@ -76,7 +76,7 @@ public abstract class BaseActivity extends AppCompatActivity {
 
     switch (item.getItemId()) {
       case android.R.id.home:
-        FragmentManager fm = getFragmentManager();
+        FragmentManager fm = getSupportFragmentManager();
         if (fm.getBackStackEntryCount() > 0) {
           fm.popBackStack(null, FragmentManager.POP_BACK_STACK_INCLUSIVE);
         } else {
@@ -93,7 +93,7 @@ public abstract class BaseActivity extends AppCompatActivity {
 
   @Override
   public void onBackPressed() {
-    FragmentManager fm = getFragmentManager();
+    FragmentManager fm = getSupportFragmentManager();
 
     if (fm.getBackStackEntryCount() > 0) {
       fm.popBackStack(null, FragmentManager.POP_BACK_STACK_INCLUSIVE);
