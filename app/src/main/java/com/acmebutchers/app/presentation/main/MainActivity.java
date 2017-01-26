@@ -3,7 +3,12 @@ package com.acmebutchers.app.presentation.main;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
+import android.support.design.widget.NavigationView;
+import android.support.v4.widget.DrawerLayout;
+import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.widget.Toolbar;
+import android.view.MenuItem;
 
 import com.acmebutchers.app.R;
 import com.acmebutchers.app.common.di.HasComponent;
@@ -19,6 +24,10 @@ import butterknife.ButterKnife;
  */
 public class MainActivity extends BaseActivity implements HasComponent<MainComponent> {
 
+  @BindView(R.id.drawer_layout)
+  DrawerLayout drawerLayout;
+  @BindView(R.id.navigation_view)
+  NavigationView navigationView;
   @BindView(R.id.toolbar)
   Toolbar toolbar;
 
@@ -34,7 +43,7 @@ public class MainActivity extends BaseActivity implements HasComponent<MainCompo
     setContentView(R.layout.activity_main);
     ButterKnife.bind(this);
     initializeInjector();
-    setSupportActionBar(toolbar);
+    setupView();
     if (savedInstanceState == null) {
       addFragment(R.id.fragmentContainer, MainFragment.newInstance());
     }
@@ -45,6 +54,45 @@ public class MainActivity extends BaseActivity implements HasComponent<MainCompo
         .applicationComponent(getApplicationComponent())
         .activityModule(getActivityModule())
         .build();
+  }
+
+  private void setupView() {
+    // Load toolbar
+    setSupportActionBar(toolbar);
+    // Load drawer menu options
+    navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
+      @Override
+      public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+        // Checking if the item is in checked state or not, if not make it in checked state
+        item.setChecked(!item.isChecked());
+
+        // Closing drawer on item click
+        drawerLayout.closeDrawers();
+
+        switch (item.getItemId()) {
+          case R.id.home:
+            // Navigate to home
+            replaceFragment(R.id.fragmentContainer, MainFragment.newInstance());
+            break;
+          case R.id.map:
+            // TODO: Navigate to map
+            break;
+          case R.id.tweets:
+            // TODO: Navigate to tweets
+            break;
+          default:
+            break;
+        }
+
+        return true;
+      }
+    });
+    // Drawer toggle
+    ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(this, drawerLayout, toolbar,
+        R.string.open_drawer, R.string.close_drawer);
+    toggle.setDrawerIndicatorEnabled(true);
+    drawerLayout.addDrawerListener(toggle);
+    toggle.syncState();
   }
 
   @Override
