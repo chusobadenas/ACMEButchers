@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+  <string name="btn_text_retry">Volver</string>
+  <string name="close_drawer">Cerrar</string>
+  <string name="home">Inicio</string>
+  <string name="main_butcher_title">Carnicería</string>
+  <string name="main_cut_title">Corte tradicional</string>
+  <string name="main_delivery_title">Reparto a domicilio</string>
+  <string name="main_intro_title">INTRODUCCIÓN</string>
+  <string name="main_quality_title">Calidad</string>
+  <string name="main_restoration_title">Restauración</string>
+  <string name="main_service_title">Servicio 24h</string>
+  <string name="map">Mapa</string>
+  <string name="open_drawer">Abrir</string>
+  <string name="error_loading_images">Ha ocurrido un error mientras se cargaban las fotos</string>
+  <string name="exception_message_generic">Ha ocurrido un error en la aplicación</string>
+  <string name="main_intro_description">En carnicerías ACME ponemos a su disposición las mejores
+    carnes, embutidos y platos preparados.</string>
+  <string name="main_delivery_description">Realice su pedido hoy y mañana lo tendrá listo en su
+    domicilio.</string>
+  <string name="main_cut_description">Nuestro corte es artesano y tradicional.</string>
+  <string name="main_quality_description">Carne de calidad de los valles pirenáicos.</string>
+  <string name="main_restoration_description">Servimos a los mejores restaurantes.</string>
+  <string name="main_service_description">Garantizamos que cumpliremos en 24h con nuestros
+    compromisos.</string>
+  <string name="main_butcher_description">Las mejores piezas de jamón ibérico y embutidos
+    tradicionales.</string>
+</resources>
