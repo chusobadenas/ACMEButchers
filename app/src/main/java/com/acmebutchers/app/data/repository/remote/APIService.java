@@ -2,7 +2,7 @@ package com.acmebutchers.app.data.repository.remote;
 
 import android.support.annotation.NonNull;
 
-import com.acmebutchers.app.data.entity.response.Photos;
+import com.acmebutchers.app.data.entity.response.PhotoSearch;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
@@ -21,14 +21,21 @@ import rx.Observable;
  */
 public interface APIService {
 
-  String API_BASE_URL = "https://api.flickr.com/services/rest/";
-  String FLICKR_API_KEY = "a667caf5c8f62e77887300cb406d8701";
+  String API_BASE_URL = "https://api.flickr.com/services/";
+  String API_VERSION = "rest";
 
-  @GET
-  Observable<Photos> searchPhotos(@NonNull @Query("method") String method,
-                                  @NonNull @Query("api_key") String apiKey,
-                                  @Query("text") String text,
-                                  @Query("tags") String[] tags);
+  String FLICKR_API_KEY = "a667caf5c8f62e77887300cb406d8701";
+  String FLICKER_SEARCH_METHOD = "flickr.photos.search";
+  String JSON_FORMAT = "json";
+  Integer NO_JSON_CALLBACK = 1;
+
+  @GET(API_VERSION)
+  Observable<PhotoSearch> searchPhotos(@NonNull @Query("method") String method,
+                                       @NonNull @Query("api_key") String apiKey,
+                                       @Query("format") String format,
+                                       @Query("nojsoncallback") Integer noJsonCallback,
+                                       @Query("text") String text,
+                                       @Query("tags") String[] tags);
 
   /********
    * Helper class that sets up a new services
@@ -45,6 +52,7 @@ public interface APIService {
     public static APIService newAPIService() {
       Gson gson = new GsonBuilder()
           .setDateFormat("yyyy-MM-dd'T'HH:mm:ss'Z'")
+          .registerTypeAdapterFactory(GsonAdapterFactory.create())
           .create();
       Retrofit retrofit = new Retrofit.Builder()
           .baseUrl(API_BASE_URL)
