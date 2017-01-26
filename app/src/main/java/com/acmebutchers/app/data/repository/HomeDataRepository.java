@@ -1,6 +1,7 @@
 package com.acmebutchers.app.data.repository;
 
 import com.acmebutchers.app.data.entity.response.PhotoId;
+import com.acmebutchers.app.data.entity.response.PhotoSearch;
 import com.acmebutchers.app.data.entity.response.Photos;
 import com.acmebutchers.app.data.repository.remote.APIService;
 import com.acmebutchers.app.domain.repository.HomeRepository;
@@ -22,23 +23,24 @@ public class HomeDataRepository implements HomeRepository {
     this.apiService = apiService;
   }
 
-  private Observable<Photos> searchPhotos(String text, String[] tags) {
-    return apiService.searchPhotos("flickr.photos.search", APIService.FLICKR_API_KEY, text, tags);
+  private Observable<PhotoSearch> searchPhotos(String text, String[] tags) {
+    return apiService.searchPhotos(APIService.FLICKER_SEARCH_METHOD, APIService.FLICKR_API_KEY,
+        APIService.JSON_FORMAT, APIService.NO_JSON_CALLBACK, text, tags);
   }
 
   @Override
   public Observable<List<String>> getImageUrls(String text, String[] tags) {
-    return searchPhotos(text, tags).map(new Func1<Photos, List<String>>() {
+    return searchPhotos(text, tags).map(new Func1<PhotoSearch, List<String>>() {
 
       @Override
-      public List<String> call(Photos photos) {
+      public List<String> call(PhotoSearch photoSearch) {
         List<String> imageUrls = new ArrayList<>();
 
-        if (photos != null) {
+        if (photoSearch != null) {
+          Photos photos = photoSearch.result();
           for (PhotoId photoId : photos.photos()) {
-            String id = photoId.id();
-            String owner = photoId.owner();
-            String url = "https://www.flickr.com/photos/" + owner + "/" + id;
+            String url = "https://farm" + photoId.farm() + ".staticflickr.com/" + photoId.server
+                () + '/' + photoId.id() + '_' + photoId.secret() + ".jpg";
             imageUrls.add(url);
           }
         }
