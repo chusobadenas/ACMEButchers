@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.NavigationView;
+import android.support.v4.app.Fragment;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.widget.Toolbar;
@@ -15,6 +16,7 @@ import com.acmebutchers.app.common.di.HasComponent;
 import com.acmebutchers.app.common.di.components.DaggerMainComponent;
 import com.acmebutchers.app.common.di.components.MainComponent;
 import com.acmebutchers.app.presentation.base.BaseActivity;
+import com.acmebutchers.app.presentation.map.MapFragment;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -69,13 +71,21 @@ public class MainActivity extends BaseActivity implements HasComponent<MainCompo
         // Closing drawer on item click
         drawerLayout.closeDrawers();
 
+        // Get current fragment
+        Fragment currentFragment = getSupportFragmentManager().findFragmentById(R.id.fragmentContainer);
+
         switch (item.getItemId()) {
           case R.id.home:
             // Navigate to home
-            replaceFragment(R.id.fragmentContainer, MainFragment.newInstance());
+            if (!(currentFragment instanceof MainFragment)) {
+              replaceFragment(R.id.fragmentContainer, MainFragment.newInstance());
+            }
             break;
           case R.id.map:
-            // TODO: Navigate to map
+            // Navigate to map
+            if (!(currentFragment instanceof MapFragment)) {
+              replaceFragment(R.id.fragmentContainer, MapFragment.newInstance());
+            }
             break;
           case R.id.tweets:
             // TODO: Navigate to tweets
