@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-  <string name="app_name">ACME Butchers</string>
+  <string name="app_name" translatable="false">ACME Butchers</string>
 
   <!-- Error messages -->
   <string name="exception_message_generic">There was an application error</string>
@@ -25,6 +25,13 @@
   <string name="main_butcher_title">Butcher shop</string>
   <string name="main_butcher_description">The best pieces of Iberian ham and traditional
     sausages.</string>
+
+  <!-- Navigation -->
+  <string name="open_drawer">Open</string>
+  <string name="close_drawer">Close</string>
+  <string name="home">Home</string>
+  <string name="map">Map</string>
+  <string name="tweets" translatable="false">Tweets</string>
 
   <!-- Retry -->
   <string name="btn_text_retry">Retry</string>

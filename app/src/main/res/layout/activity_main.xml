@@ -1,21 +1,36 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.design.widget.CoordinatorLayout
+<android.support.v4.widget.DrawerLayout
+    android:id="@+id/drawer_layout"
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/bg_light_grey">
+    android:fitsSystemWindows="true"
+    tools:context=".presentation.main.MainActivity">
 
-  <include layout="@layout/toolbar"/>
-
-  <RelativeLayout
+  <LinearLayout
       android:layout_width="match_parent"
       android:layout_height="match_parent"
-      app:layout_behavior="@string/appbar_scrolling_view_behavior">
+      android:orientation="vertical">
 
+    <include
+        android:id="@+id/toolbar"
+        layout="@layout/toolbar"/>
+
+    <!-- The main content view -->
     <FrameLayout
         android:id="@+id/fragmentContainer"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"/>
-  </RelativeLayout>
-</android.support.design.widget.CoordinatorLayout>
+        android:layout_height="match_parent"
+        android:background="@color/bg_light_grey"/>
+  </LinearLayout>
+  <!-- The navigation view -->
+  <android.support.design.widget.NavigationView
+      android:id="@+id/navigation_view"
+      android:layout_width="wrap_content"
+      android:layout_height="match_parent"
+      android:layout_gravity="start"
+      app:headerLayout="@layout/header"
+      app:menu="@menu/navigation_items"/>
+</android.support.v4.widget.DrawerLayout>
