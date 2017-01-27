@@ -46,4 +46,14 @@ public final class ApiCreator {
   public static FlickrApiService newFlickrApiService(String baseUrl) {
     return createRetrofit(baseUrl).create(FlickrApiService.class);
   }
+
+  /**
+   * Creates a new {@link GoogleApiService}
+   *
+   * @param baseUrl Google base url
+   * @return a new {@link GoogleApiService}
+   */
+  public static GoogleApiService newGoogleApiService(String baseUrl) {
+    return createRetrofit(baseUrl).create(GoogleApiService.class);
+  }
 }
