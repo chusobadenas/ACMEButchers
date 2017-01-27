@@ -7,7 +7,7 @@ import com.acmebutchers.app.common.di.modules.ApplicationModule;
 import com.acmebutchers.app.common.executor.PostExecutionThread;
 import com.acmebutchers.app.common.executor.ThreadExecutor;
 import com.acmebutchers.app.data.repository.HomeDataRepository;
-import com.acmebutchers.app.data.repository.remote.APIService;
+import com.acmebutchers.app.data.repository.remote.FlickrApiService;
 import com.acmebutchers.app.presentation.base.BaseActivity;
 import com.acmebutchers.app.presentation.navigation.Navigator;
 
@@ -32,7 +32,7 @@ public interface ApplicationComponent {
 
   PostExecutionThread postExecutionThread();
 
-  APIService apiService();
+  FlickrApiService flickrApiService();
 
   Navigator navigator();
 
