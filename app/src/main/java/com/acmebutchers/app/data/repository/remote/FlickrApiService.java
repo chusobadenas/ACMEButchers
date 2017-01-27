@@ -17,9 +17,9 @@ import retrofit2.http.Query;
 import rx.Observable;
 
 /**
- * APIService for retrieving data from the network using Retrofit.
+ * FlickrApiService for retrieving data from the network using Retrofit.
  */
-public interface APIService {
+public interface FlickrApiService {
 
   String API_BASE_URL = "https://api.flickr.com/services/";
   String API_VERSION = "rest";
@@ -49,7 +49,7 @@ public interface APIService {
           .build();
     }
 
-    public static APIService newAPIService() {
+    public static FlickrApiService newAPIService() {
       Gson gson = new GsonBuilder()
           .setDateFormat("yyyy-MM-dd'T'HH:mm:ss'Z'")
           .registerTypeAdapterFactory(GsonAdapterFactory.create())
@@ -60,7 +60,7 @@ public interface APIService {
           .addConverterFactory(GsonConverterFactory.create(gson))
           .addCallAdapterFactory(RxJavaCallAdapterFactory.create())
           .build();
-      return retrofit.create(APIService.class);
+      return retrofit.create(FlickrApiService.class);
     }
   }
 }
