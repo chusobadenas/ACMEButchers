@@ -14,10 +14,13 @@ import android.view.ViewGroup;
 
 import com.acmebutchers.app.R;
 import com.acmebutchers.app.common.di.components.MainComponent;
+import com.acmebutchers.app.domain.Place;
 import com.acmebutchers.app.presentation.base.BaseFragment;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
+
+import java.util.List;
 
 import javax.inject.Inject;
 
@@ -123,12 +126,24 @@ public class MapFragment extends BaseFragment implements MapMvpView, OnMapReadyC
     }
   }
 
+  private void loadButcherShops() {
+    mapPresenter.loadButcherShops();
+  }
+
+  @Override
+  public void showButcherShops(List<Place> shops) {
+    // TODO
+  }
+
   @Override
   public void onMapReady(GoogleMap googleMap) {
     this.googleMap = googleMap;
 
     // Show location in map
     showCurrentLocation();
+
+    // Load butcher shops
+    loadButcherShops();
   }
 
   /**
