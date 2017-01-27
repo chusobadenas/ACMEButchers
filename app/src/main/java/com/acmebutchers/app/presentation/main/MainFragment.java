@@ -120,7 +120,8 @@ public class MainFragment extends BaseFragment implements MainMvpView {
 
   @OnClick(R.id.bt_retry)
   void onButtonRetryClick() {
-    // TODO
+    hideRetry();
+    loadImages();
   }
 
   /**
