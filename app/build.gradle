@@ -50,6 +50,7 @@ dependencies {
   compile 'com.google.dagger:dagger:2.8'
   compile 'com.jakewharton.timber:timber:4.1.2'
   compile 'com.github.bumptech.glide:glide:3.7.0'
+  compile 'pl.charmas.android:android-reactive-location:0.9'
 
   testCompile 'junit:junit:4.12'
   testCompile 'org.easymock:easymock:3.4'
