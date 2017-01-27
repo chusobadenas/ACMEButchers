@@ -7,6 +7,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.acmebutchers.app.R;
+import com.acmebutchers.app.common.di.components.MainComponent;
 import com.acmebutchers.app.presentation.base.BaseFragment;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
@@ -29,6 +30,12 @@ public class MapFragment extends BaseFragment implements MapMvpView, OnMapReadyC
    */
   public static MapFragment newInstance() {
     return new MapFragment();
+  }
+
+  @Override
+  public void onCreate(Bundle savedInstanceState) {
+    super.onCreate(savedInstanceState);
+    getComponent(MainComponent.class).inject(this);
   }
 
   @Override
