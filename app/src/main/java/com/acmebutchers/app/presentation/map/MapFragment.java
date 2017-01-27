@@ -1,7 +1,13 @@
 package com.acmebutchers.app.presentation.map;
 
+import android.Manifest;
+import android.annotation.SuppressLint;
 import android.content.Context;
+import android.content.pm.PackageManager;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
+import android.support.v4.app.ActivityCompat;
+import android.support.v4.content.ContextCompat;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -11,6 +17,7 @@ import com.acmebutchers.app.common.di.components.MainComponent;
 import com.acmebutchers.app.presentation.base.BaseFragment;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
+import com.google.android.gms.maps.SupportMapFragment;
 
 import javax.inject.Inject;
 
@@ -18,6 +25,8 @@ import butterknife.ButterKnife;
 import butterknife.Unbinder;
 
 public class MapFragment extends BaseFragment implements MapMvpView, OnMapReadyCallback {
+
+  private static final int REQUEST_LOCATION = 1;
 
   @Inject
   MapPresenter mapPresenter;
@@ -49,7 +58,7 @@ public class MapFragment extends BaseFragment implements MapMvpView, OnMapReadyC
   @Override
   public void onResume() {
     super.onResume();
-    loadMap();
+    refreshMap();
   }
 
   @Override
@@ -89,16 +98,53 @@ public class MapFragment extends BaseFragment implements MapMvpView, OnMapReadyC
     showToastMessage(message);
   }
 
+  private void refreshMap() {
+    // Load map
+    SupportMapFragment mapFragment = (SupportMapFragment) getChildFragmentManager()
+        .findFragmentById(R.id.map_fragment);
+    if (mapFragment != null) {
+      mapFragment.getMapAsync(this);
+    }
+  }
+
   /**
-   * Load map
+   * Shows the location button in the map
    */
-  private void loadMap() {
-    mapPresenter.initialize();
+  private void showCurrentLocation() {
+    // Check location permission
+    if (ContextCompat.checkSelfPermission(getActivity(), Manifest.permission.ACCESS_FINE_LOCATION)
+        == PackageManager.PERMISSION_GRANTED) {
+      googleMap.setMyLocationEnabled(true);
+    }
+    // Request location permission
+    else {
+      ActivityCompat.requestPermissions(getActivity(), new String[]{Manifest.permission
+          .ACCESS_FINE_LOCATION}, REQUEST_LOCATION);
+    }
   }
 
   @Override
   public void onMapReady(GoogleMap googleMap) {
     this.googleMap = googleMap;
+
+    // Show location in map
+    showCurrentLocation();
+  }
+
+  /**
+   * {@inheritDoc}
+   */
+  @Override
+  @SuppressLint("MissingPermission")
+  public final void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions,
+                                               @NonNull int[] grantResults) {
+    // Permission granted
+    if (requestCode == REQUEST_LOCATION && grantResults.length == 1 && grantResults[0] ==
+        PackageManager.PERMISSION_GRANTED) {
+      googleMap.setMyLocationEnabled(true);
+    } else {
+      super.onRequestPermissionsResult(requestCode, permissions, grantResults);
+    }
   }
 
   @Override
