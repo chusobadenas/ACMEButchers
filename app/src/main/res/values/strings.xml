@@ -5,6 +5,7 @@
   <!-- Error messages -->
   <string name="exception_message_generic">There was an application error</string>
   <string name="error_loading_images">There was an error loading the images</string>
+  <string name="error_loading_shops">There was an error loading the butcher shops</string>
 
   <!-- Main -->
   <string name="main_intro_title">INTRO</string>

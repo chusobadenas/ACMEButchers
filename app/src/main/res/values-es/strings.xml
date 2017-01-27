@@ -25,4 +25,5 @@
     compromisos.</string>
   <string name="main_butcher_description">Las mejores piezas de jamón ibérico y embutidos
     tradicionales.</string>
+  <string name="error_loading_shops">Ha ocurrido un error mientras se cargaban las tiendas</string>
 </resources>
