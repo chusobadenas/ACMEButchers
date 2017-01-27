@@ -3,7 +3,7 @@ package com.acmebutchers.app.data.repository;
 import com.acmebutchers.app.data.entity.response.PhotoId;
 import com.acmebutchers.app.data.entity.response.PhotoSearch;
 import com.acmebutchers.app.data.entity.response.Photos;
-import com.acmebutchers.app.data.repository.remote.APIService;
+import com.acmebutchers.app.data.repository.remote.FlickrApiService;
 
 import org.junit.Before;
 import org.junit.Test;
@@ -28,12 +28,12 @@ public class HomeDataRepositoryTest {
   private HomeDataRepository homeDataRepository;
 
   @Mock
-  private APIService apiService;
+  private FlickrApiService flickrApiService;
 
   @Before
   public void setUp() {
     MockitoAnnotations.initMocks(this);
-    homeDataRepository = new HomeDataRepository(apiService);
+    homeDataRepository = new HomeDataRepository(flickrApiService);
   }
 
   @Test
@@ -44,8 +44,9 @@ public class HomeDataRepositoryTest {
     PhotoSearch photoSearch = PhotoSearch.create(photos);
     Observable<PhotoSearch> apiPhotoSearch = Observable.just(photoSearch);
 
-    when(apiService.searchPhotos(APIService.FLICKER_SEARCH_METHOD, APIService.FLICKR_API_KEY,
-        APIService.JSON_FORMAT, APIService.NO_JSON_CALLBACK, BUTCHER_SHOP, TAGS))
+    when(flickrApiService.searchPhotos(FlickrApiService.FLICKR_SEARCH_METHOD,
+        FlickrApiService.FLICKR_API_KEY, FlickrApiService.JSON_FORMAT,
+        FlickrApiService.NO_JSON_CALLBACK, BUTCHER_SHOP, TAGS))
         .thenReturn(apiPhotoSearch);
 
     Observable<List<String>> observable = homeDataRepository.getImageUrls(BUTCHER_SHOP, TAGS);

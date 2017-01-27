@@ -3,7 +3,7 @@ package com.acmebutchers.app.data.repository;
 import com.acmebutchers.app.data.entity.response.PhotoId;
 import com.acmebutchers.app.data.entity.response.PhotoSearch;
 import com.acmebutchers.app.data.entity.response.Photos;
-import com.acmebutchers.app.data.repository.remote.APIService;
+import com.acmebutchers.app.data.repository.remote.FlickrApiService;
 import com.acmebutchers.app.domain.repository.HomeRepository;
 
 import java.util.ArrayList;
@@ -16,16 +16,17 @@ import rx.functions.Func1;
 
 public class HomeDataRepository implements HomeRepository {
 
-  private final APIService apiService;
+  private final FlickrApiService flickrApiService;
 
   @Inject
-  public HomeDataRepository(APIService apiService) {
-    this.apiService = apiService;
+  public HomeDataRepository(FlickrApiService flickrApiService) {
+    this.flickrApiService = flickrApiService;
   }
 
   private Observable<PhotoSearch> searchPhotos(String text, String[] tags) {
-    return apiService.searchPhotos(APIService.FLICKER_SEARCH_METHOD, APIService.FLICKR_API_KEY,
-        APIService.JSON_FORMAT, APIService.NO_JSON_CALLBACK, text, tags);
+    return flickrApiService.searchPhotos(FlickrApiService.FLICKR_SEARCH_METHOD,
+        FlickrApiService.FLICKR_API_KEY, FlickrApiService.JSON_FORMAT,
+        FlickrApiService.NO_JSON_CALLBACK, text, tags);
   }
 
   @Override
