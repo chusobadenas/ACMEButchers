@@ -67,7 +67,7 @@ public class MainPresenter extends BasePresenter<MainMvpView> {
       // Show error
       Timber.e(errorBundle.getException(), "There was an error loading the images");
       mvpView.hideLoading();
-      mvpView.showError(errorBundle.getErrorMessage());
+      showErrorMessage(errorBundle);
     }
 
     @Override
