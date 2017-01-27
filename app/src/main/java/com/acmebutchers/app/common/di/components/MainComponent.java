@@ -3,6 +3,7 @@ package com.acmebutchers.app.common.di.components;
 import com.acmebutchers.app.common.di.PerActivity;
 import com.acmebutchers.app.common.di.modules.ActivityModule;
 import com.acmebutchers.app.common.di.modules.HomeModule;
+import com.acmebutchers.app.common.di.modules.MapModule;
 import com.acmebutchers.app.presentation.main.MainFragment;
 import com.acmebutchers.app.presentation.map.MapFragment;
 
@@ -13,7 +14,7 @@ import dagger.Component;
  */
 @PerActivity
 @Component(dependencies = ApplicationComponent.class, modules = {ActivityModule.class, HomeModule
-    .class})
+    .class, MapModule.class})
 public interface MainComponent extends ActivityComponent {
 
   void inject(MainFragment mainFragment);
