@@ -17,6 +17,7 @@ import com.acmebutchers.app.common.di.components.DaggerMainComponent;
 import com.acmebutchers.app.common.di.components.MainComponent;
 import com.acmebutchers.app.presentation.base.BaseActivity;
 import com.acmebutchers.app.presentation.map.MapFragment;
+import com.acmebutchers.app.presentation.tweets.TweetsFragment;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -88,7 +89,10 @@ public class MainActivity extends BaseActivity implements HasComponent<MainCompo
             }
             break;
           case R.id.tweets:
-            // TODO: Navigate to tweets
+            // Navigate to tweets
+            if (!(currentFragment instanceof TweetsFragment)) {
+              replaceFragment(R.id.fragmentContainer, TweetsFragment.newInstance());
+            }
             break;
           default:
             break;
