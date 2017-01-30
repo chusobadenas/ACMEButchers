@@ -12,7 +12,7 @@ import com.acmebutchers.app.data.repository.remote.GoogleApiService;
 import com.acmebutchers.app.domain.Place;
 import com.acmebutchers.app.domain.repository.MapRepository;
 
-import java.util.Collections;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.inject.Inject;
@@ -60,7 +60,7 @@ public class MapDataRepository implements MapRepository {
         .map(new Func1<PlaceSearch, List<Place>>() {
           @Override
           public List<Place> call(PlaceSearch placeSearch) {
-            List<Place> shops = Collections.emptyList();
+            List<Place> shops = new ArrayList<>();
 
             for (PlaceId placeId : placeSearch.results()) {
               String placeName = placeId.name();
