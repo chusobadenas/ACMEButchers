@@ -55,7 +55,7 @@ public class MapDataRepository implements MapRepository {
         keyword);
   }
 
-  private Observable<List<Place>> getPlaces(LocationEntity locationEntity) {
+  protected Observable<List<Place>> getPlaces(LocationEntity locationEntity) {
     return searchPlaces(locationEntity, RADIUS, KEYWORD)
         .map(new Func1<PlaceSearch, List<Place>>() {
           @Override
