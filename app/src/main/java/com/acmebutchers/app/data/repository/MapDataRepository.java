@@ -3,6 +3,7 @@ package com.acmebutchers.app.data.repository;
 import android.content.Context;
 import android.location.Location;
 
+import com.acmebutchers.app.BuildConfig;
 import com.acmebutchers.app.common.di.ApplicationContext;
 import com.acmebutchers.app.data.entity.LocationEntity;
 import com.acmebutchers.app.data.entity.response.PlaceId;
@@ -50,8 +51,8 @@ public class MapDataRepository implements MapRepository {
   private Observable<PlaceSearch> searchPlaces(LocationEntity locationEntity, Integer radius,
                                                String keyword) {
     String location = "" + locationEntity.latitude() + ',' + locationEntity.longitude();
-    return googleApiService.searchPlacesByKeyword(GoogleApiService.GOOGLE_API_KEY, location,
-        radius, keyword);
+    return googleApiService.searchPlacesByKeyword(BuildConfig.GOOGLE_API_KEY, location, radius,
+        keyword);
   }
 
   private Observable<List<Place>> getPlaces(LocationEntity locationEntity) {
