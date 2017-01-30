@@ -7,14 +7,14 @@
     android:orientation="vertical">
 
   <TextView
-      android:id="@+id/tweets_empty"
+      android:id="@android:id/empty"
       android:layout_width="match_parent"
       android:layout_height="match_parent"
       android:gravity="center_horizontal|center_vertical"
       android:text="@string/tweets_empty"/>
 
   <ListView
-      android:id="@+id/tweets_list"
+      android:id="@android:id/list"
       android:layout_width="match_parent"
       android:layout_height="0dp"
       android:layout_weight="1"
