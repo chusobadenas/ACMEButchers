@@ -19,6 +19,8 @@ import com.acmebutchers.app.presentation.base.BaseFragment;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
+import com.google.android.gms.maps.model.LatLng;
+import com.google.android.gms.maps.model.MarkerOptions;
 
 import java.util.List;
 
@@ -132,7 +134,13 @@ public class MapFragment extends BaseFragment implements MapMvpView, OnMapReadyC
 
   @Override
   public void showButcherShops(List<Place> shops) {
-    // TODO
+    // Add butcher shops as markers in the map
+    for (Place shop : shops) {
+      MarkerOptions marker = new MarkerOptions()
+          .position(new LatLng(shop.location().latitude(), shop.location().longitude()))
+          .title(shop.name());
+      googleMap.addMarker(marker);
+    }
   }
 
   @Override
