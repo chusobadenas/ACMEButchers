@@ -15,7 +15,7 @@ import static org.mockito.Mockito.verify;
 
 public class MainPresenterTest {
 
-  private MainPresenter mMainPresenter;
+  private MainPresenter mainPresenter;
 
   @Mock
   private GetHomeImages getHomeImages;
@@ -25,25 +25,25 @@ public class MainPresenterTest {
   @Before
   public void setUp() {
     MockitoAnnotations.initMocks(this);
-    mMainPresenter = new MainPresenter(getHomeImages);
-    mMainPresenter.attachView(mainMvpView);
+    mainPresenter = new MainPresenter(getHomeImages);
+    mainPresenter.attachView(mainMvpView);
   }
 
   @Test
   public void testAttachViewSuccess() {
-    assertNotNull(mMainPresenter.getMvpView());
+    assertNotNull(mainPresenter.getMvpView());
   }
 
   @Test
   public void testDetachViewSuccess() {
-    mMainPresenter.detachView();
-    assertNull(mMainPresenter.getMvpView());
+    mainPresenter.detachView();
+    assertNull(mainPresenter.getMvpView());
     verify(getHomeImages).unsubscribe();
   }
 
   @Test
   public void testInitializeSuccess() {
-    mMainPresenter.initialize();
+    mainPresenter.initialize();
     verify(getHomeImages).execute(any(DefaultSubscriber.class));
   }
 }
