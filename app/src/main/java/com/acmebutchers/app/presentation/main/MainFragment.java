@@ -51,7 +51,7 @@ public class MainFragment extends BaseFragment implements MainMvpView {
   private Unbinder unbinder;
 
   /**
-   * Creates a new instance of a MainFragment.
+   * Creates a new instance of {@link MainFragment}.
    */
   public static MainFragment newInstance() {
     return new MainFragment();

@@ -40,7 +40,7 @@ public class MapFragment extends BaseFragment implements MapMvpView, OnMapReadyC
   private Unbinder unbinder;
 
   /**
-   * Creates a new instance of a MapFragment.
+   * Creates a new instance of {@link MapFragment}.
    */
   public static MapFragment newInstance() {
     return new MapFragment();
