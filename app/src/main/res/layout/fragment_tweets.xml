@@ -8,6 +8,4 @@
       android:id="@+id/content_tweets"
       layout="@layout/content_tweets"/>
 
-  <include layout="@layout/view_progress"/>
-
 </RelativeLayout>
