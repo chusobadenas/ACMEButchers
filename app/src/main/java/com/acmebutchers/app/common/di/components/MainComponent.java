@@ -6,6 +6,7 @@ import com.acmebutchers.app.common.di.modules.HomeModule;
 import com.acmebutchers.app.common.di.modules.MapModule;
 import com.acmebutchers.app.presentation.main.MainFragment;
 import com.acmebutchers.app.presentation.map.MapFragment;
+import com.acmebutchers.app.presentation.tweets.TweetsFragment;
 
 import dagger.Component;
 
@@ -20,4 +21,6 @@ public interface MainComponent extends ActivityComponent {
   void inject(MainFragment mainFragment);
 
   void inject(MapFragment mapFragment);
+
+  void inject(TweetsFragment tweetsFragment);
 }
