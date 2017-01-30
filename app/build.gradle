@@ -14,6 +14,8 @@ android {
     versionCode 1
     versionName "1.0"
     testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+    buildConfigField "String", "FLICK_API_KEY", "\"a667caf5c8f62e77887300cb406d8701\""
+    buildConfigField "String", "GOOGLE_API_KEY", "\"AIzaSyAjKY1FIgPOmcM2kbnidACDEcpgb79yMrc\""
   }
 
   buildTypes {
@@ -41,6 +43,7 @@ dependencies {
   compile 'com.android.support:design:25.1.0'
   compile 'com.google.android.gms:play-services-location:10.0.1'
   compile 'com.google.android.gms:play-services-maps:10.0.1'
+  compile 'com.squareup.okhttp3:logging-interceptor:3.3.1'
   compile 'com.squareup.retrofit2:retrofit:2.1.0'
   compile 'com.squareup.retrofit2:converter-gson:2.1.0'
   compile 'com.squareup.retrofit2:adapter-rxjava:2.1.0'

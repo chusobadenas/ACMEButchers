@@ -14,7 +14,6 @@ import rx.Observable;
 public interface GoogleApiService {
 
   String API_BASE_URL = "https://maps.googleapis.com/maps/api/place/nearbysearch/";
-  String GOOGLE_API_KEY = "AIzaSyDUBOw9A8_klQuiGMHdMyMfmtUDXBBc8RM";
 
   @GET("json")
   Observable<PlaceSearch> searchPlacesByKeyword(@NonNull @Query("key") String apiKey,
