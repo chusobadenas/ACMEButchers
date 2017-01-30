@@ -31,7 +31,7 @@ public class AndroidApplication extends Application implements HasComponent<Appl
         .build();
   }
 
-  protected void initializeTimber() {
+  private void initializeTimber() {
     if (BuildConfig.DEBUG) {
       Timber.plant(new Timber.DebugTree());
     }
