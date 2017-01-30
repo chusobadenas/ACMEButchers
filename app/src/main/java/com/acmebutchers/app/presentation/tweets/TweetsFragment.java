@@ -2,20 +2,23 @@ package com.acmebutchers.app.presentation.tweets;
 
 import android.content.Context;
 import android.os.Bundle;
+import android.support.v4.app.ListFragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import com.acmebutchers.app.R;
-import com.acmebutchers.app.common.di.components.MainComponent;
-import com.acmebutchers.app.presentation.base.BaseFragment;
+import com.acmebutchers.app.presentation.main.MainActivity;
+import com.twitter.sdk.android.tweetui.SearchTimeline;
+import com.twitter.sdk.android.tweetui.TweetTimelineListAdapter;
 
 import javax.inject.Inject;
 
 import butterknife.ButterKnife;
 import butterknife.Unbinder;
 
-public class TweetsFragment extends BaseFragment implements TweetsMvpView {
+public class TweetsFragment extends ListFragment implements TweetsMvpView {
 
   @Inject
   TweetsPresenter tweetsPresenter;
@@ -32,7 +35,7 @@ public class TweetsFragment extends BaseFragment implements TweetsMvpView {
   @Override
   public void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
-    getComponent(MainComponent.class).inject(this);
+    ((MainActivity) getActivity()).getComponent().inject(this);
   }
 
   @Override
@@ -83,7 +86,7 @@ public class TweetsFragment extends BaseFragment implements TweetsMvpView {
 
   @Override
   public void showError(String message) {
-    showToastMessage(message);
+    Toast.makeText(getActivity(), message, Toast.LENGTH_SHORT).show();
   }
 
   private void loadTweets() {
@@ -91,8 +94,14 @@ public class TweetsFragment extends BaseFragment implements TweetsMvpView {
   }
 
   @Override
-  public void showTweets() {
-    // TODO
+  public void showTweets(SearchTimeline timeline) {
+    // Create adapter
+    TweetTimelineListAdapter adapter = new TweetTimelineListAdapter.Builder(context())
+        .setTimeline(timeline)
+        .build();
+
+    // Set tweets to list
+    setListAdapter(adapter);
   }
 
   @Override

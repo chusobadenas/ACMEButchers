@@ -2,6 +2,7 @@ package com.acmebutchers.app.presentation.tweets;
 
 import com.acmebutchers.app.common.di.PerActivity;
 import com.acmebutchers.app.presentation.base.BasePresenter;
+import com.twitter.sdk.android.tweetui.SearchTimeline;
 
 import javax.inject.Inject;
 
@@ -18,11 +19,17 @@ public class TweetsPresenter extends BasePresenter<TweetsMvpView> {
    */
   void loadTweets() {
     checkViewAttached();
+    getMvpView().showLoading();
     getTweets();
   }
 
   private void getTweets() {
-    // TODO
-    getMvpView().showTweets();
+    // Get tweets
+    SearchTimeline timeline = new SearchTimeline.Builder()
+        .query("meat+is+healthy")
+        .build();
+
+    // Show results
+    getMvpView().showTweets(timeline);
   }
 }
