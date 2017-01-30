@@ -11,7 +11,7 @@ import android.widget.Toast;
 import com.acmebutchers.app.common.di.HasComponent;
 
 /**
- * Base {@link android.app.Fragment} class for every fragment in this application.
+ * Base {@link android.app.Fragment} class for each fragment in this application.
  */
 public abstract class BaseFragment extends Fragment {
 
