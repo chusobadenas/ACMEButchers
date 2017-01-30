@@ -26,4 +26,5 @@
   <string name="main_butcher_description">Las mejores piezas de jamón ibérico y embutidos
     tradicionales.</string>
   <string name="error_loading_shops">Ha ocurrido un error mientras se cargaban las tiendas</string>
+  <string name="tweets_empty">No hay tweets</string>
 </resources>

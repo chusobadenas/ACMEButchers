@@ -36,4 +36,7 @@
 
   <!-- Retry -->
   <string name="btn_text_retry">Retry</string>
+
+  <!-- Tweets -->
+  <string name="tweets_empty">No tweets</string>
 </resources>
