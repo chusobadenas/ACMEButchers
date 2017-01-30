@@ -26,7 +26,7 @@ public class HomeDataRepository implements HomeRepository {
 
   private Observable<PhotoSearch> searchPhotos(String text, String[] tags) {
     return flickrApiService.searchPhotos(FlickrApiService.FLICKR_SEARCH_METHOD,
-        BuildConfig.FLICK_API_KEY, FlickrApiService.JSON_FORMAT,
+        BuildConfig.FLICKR_API_KEY, FlickrApiService.JSON_FORMAT,
         FlickrApiService.NO_JSON_CALLBACK, text, tags);
   }
 

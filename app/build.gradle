@@ -14,7 +14,7 @@ android {
     versionCode 1
     versionName "1.0"
     testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
-    buildConfigField "String", "FLICK_API_KEY", "\"a667caf5c8f62e77887300cb406d8701\""
+    buildConfigField "String", "FLICKR_API_KEY", "\"a667caf5c8f62e77887300cb406d8701\""
     buildConfigField "String", "GOOGLE_API_KEY", "\"AIzaSyAjKY1FIgPOmcM2kbnidACDEcpgb79yMrc\""
   }
 

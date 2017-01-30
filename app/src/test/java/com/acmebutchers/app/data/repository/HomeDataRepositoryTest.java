@@ -1,5 +1,6 @@
 package com.acmebutchers.app.data.repository;
 
+import com.acmebutchers.app.BuildConfig;
 import com.acmebutchers.app.data.entity.response.PhotoId;
 import com.acmebutchers.app.data.entity.response.PhotoSearch;
 import com.acmebutchers.app.data.entity.response.Photos;
@@ -45,7 +46,7 @@ public class HomeDataRepositoryTest {
     Observable<PhotoSearch> apiPhotoSearch = Observable.just(photoSearch);
 
     when(flickrApiService.searchPhotos(FlickrApiService.FLICKR_SEARCH_METHOD,
-        FlickrApiService.FLICKR_API_KEY, FlickrApiService.JSON_FORMAT,
+        BuildConfig.FLICKR_API_KEY, FlickrApiService.JSON_FORMAT,
         FlickrApiService.NO_JSON_CALLBACK, BUTCHER_SHOP, TAGS))
         .thenReturn(apiPhotoSearch);
 
