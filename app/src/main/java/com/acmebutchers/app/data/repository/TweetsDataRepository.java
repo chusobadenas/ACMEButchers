@@ -20,7 +20,7 @@ import twitter4j.TwitterException;
 public class TweetsDataRepository implements TweetsRepository {
 
   private static final String QUERY = "meat is healthy";
-  private static final Double RADIUS = 30.0;
+  private static final Double RADIUS = 5000.0;
 
   private final MapRepository mapRepository;
   private final Twitter twitter;
