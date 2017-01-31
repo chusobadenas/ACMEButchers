@@ -28,9 +28,10 @@
   <!-- The navigation view -->
   <android.support.design.widget.NavigationView
       android:id="@+id/navigation_view"
-      android:layout_width="wrap_content"
+      android:layout_width="280dp"
       android:layout_height="match_parent"
       android:layout_gravity="start"
+      android:background="@color/bg_light_grey"
       app:headerLayout="@layout/header"
       app:menu="@menu/navigation_items"/>
 </android.support.v4.widget.DrawerLayout>
