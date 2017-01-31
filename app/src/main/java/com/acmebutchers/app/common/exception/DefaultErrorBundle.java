@@ -9,9 +9,9 @@ import com.acmebutchers.app.R;
  */
 public class DefaultErrorBundle implements ErrorBundle {
 
-  private Context context;
+  private final Context context;
   private Exception exception;
-  private Integer errorMsgId;
+  private final Integer errorMsgId;
 
   /**
    * Constructor
