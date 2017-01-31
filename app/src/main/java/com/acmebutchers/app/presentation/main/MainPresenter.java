@@ -46,8 +46,7 @@ public class MainPresenter extends BasePresenter<MainMvpView> {
    * Loads home images
    */
   private void loadImages() {
-    MainMvpView mvpView = getMvpView();
-    mvpView.showLoading();
+    getMvpView().showLoading();
     getHomeImages();
   }
 
