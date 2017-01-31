@@ -3,6 +3,7 @@ package com.acmebutchers.app.common.di.modules;
 import android.content.Context;
 
 import com.acmebutchers.app.AndroidApplication;
+import com.acmebutchers.app.BuildConfig;
 import com.acmebutchers.app.common.di.ApplicationContext;
 import com.acmebutchers.app.common.executor.JobExecutor;
 import com.acmebutchers.app.common.executor.PostExecutionThread;
@@ -10,16 +11,21 @@ import com.acmebutchers.app.common.executor.ThreadExecutor;
 import com.acmebutchers.app.common.executor.UIThread;
 import com.acmebutchers.app.data.repository.HomeDataRepository;
 import com.acmebutchers.app.data.repository.MapDataRepository;
+import com.acmebutchers.app.data.repository.TweetsDataRepository;
 import com.acmebutchers.app.data.repository.remote.ApiCreator;
 import com.acmebutchers.app.data.repository.remote.FlickrApiService;
 import com.acmebutchers.app.data.repository.remote.GoogleApiService;
 import com.acmebutchers.app.domain.repository.HomeRepository;
 import com.acmebutchers.app.domain.repository.MapRepository;
+import com.acmebutchers.app.domain.repository.TweetsRepository;
 
 import javax.inject.Singleton;
 
 import dagger.Module;
 import dagger.Provides;
+import twitter4j.Twitter;
+import twitter4j.TwitterFactory;
+import twitter4j.conf.ConfigurationBuilder;
 
 /**
  * Dagger module that provides objects which will live during the application lifecycle.
@@ -79,5 +85,24 @@ public class ApplicationModule {
   @Singleton
   MapRepository provideMapRepository(MapDataRepository mapDataRepository) {
     return mapDataRepository;
+  }
+
+  @Provides
+  @Singleton
+  TweetsRepository provideTweetsRepository(TweetsDataRepository tweetsDataRepository) {
+    return tweetsDataRepository;
+  }
+
+  @Provides
+  @Singleton
+  Twitter provideTwitter() {
+    ConfigurationBuilder configBuilder = new ConfigurationBuilder();
+    configBuilder.setOAuthConsumerKey(BuildConfig.TWITTER_API_KEY)
+        .setOAuthConsumerSecret(BuildConfig.TWITTER_API_SECRET)
+        .setOAuthAccessToken(BuildConfig.TWITTER_ACCESS_TOKEN)
+        .setOAuthAccessTokenSecret(BuildConfig.TWITTER_ACCESS_TOKEN_SECRET);
+
+    TwitterFactory twitterFactory = new TwitterFactory(configBuilder.build());
+    return twitterFactory.getInstance();
   }
 }

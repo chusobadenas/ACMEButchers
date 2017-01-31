@@ -8,6 +8,7 @@ import com.acmebutchers.app.common.executor.PostExecutionThread;
 import com.acmebutchers.app.common.executor.ThreadExecutor;
 import com.acmebutchers.app.data.repository.HomeDataRepository;
 import com.acmebutchers.app.data.repository.MapDataRepository;
+import com.acmebutchers.app.data.repository.TweetsDataRepository;
 import com.acmebutchers.app.data.repository.remote.FlickrApiService;
 import com.acmebutchers.app.data.repository.remote.GoogleApiService;
 import com.acmebutchers.app.presentation.base.BaseActivity;
@@ -16,6 +17,7 @@ import com.acmebutchers.app.presentation.navigation.Navigator;
 import javax.inject.Singleton;
 
 import dagger.Component;
+import twitter4j.Twitter;
 
 /**
  * A component whose lifetime is the life of the application.
@@ -43,4 +45,8 @@ public interface ApplicationComponent {
   HomeDataRepository homeDataRepository();
 
   MapDataRepository mapDataRepository();
+
+  TweetsDataRepository tweetsDataRepository();
+
+  Twitter twitter();
 }
