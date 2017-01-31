@@ -31,8 +31,15 @@ public class MapModuleTest {
 
   @Test
   public void testProvideGetHomeSuccess() {
-    UseCase getButcherShops = mapModule.provideGetButcherShops(mapDataRepository, threadExecutor,
-        postExecutionThread);
+    UseCase getButcherShops = mapModule.provideGetButcherShops(mapDataRepository,
+        threadExecutor, postExecutionThread);
     assertNotNull(getButcherShops);
+  }
+
+  @Test
+  public void testProvideGetCurrentLocationSuccess() {
+    UseCase getCurrentLocation = mapModule.provideGetCurrentLocation(mapDataRepository,
+        threadExecutor, postExecutionThread);
+    assertNotNull(getCurrentLocation);
   }
 }

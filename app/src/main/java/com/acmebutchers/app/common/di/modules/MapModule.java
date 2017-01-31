@@ -6,6 +6,7 @@ import com.acmebutchers.app.common.executor.ThreadExecutor;
 import com.acmebutchers.app.data.repository.MapDataRepository;
 import com.acmebutchers.app.domain.interactor.UseCase;
 import com.acmebutchers.app.domain.interactor.map.GetButcherShops;
+import com.acmebutchers.app.domain.interactor.map.GetCurrentLocation;
 
 import javax.inject.Named;
 
@@ -21,5 +22,13 @@ public class MapModule {
   public UseCase provideGetButcherShops(MapDataRepository mapDataRepository, ThreadExecutor
       threadExecutor, PostExecutionThread postExecutionThread) {
     return new GetButcherShops(mapDataRepository, threadExecutor, postExecutionThread);
+  }
+
+  @Provides
+  @PerActivity
+  @Named("currentLocation")
+  public UseCase provideGetCurrentLocation(MapDataRepository mapDataRepository, ThreadExecutor
+      threadExecutor, PostExecutionThread postExecutionThread) {
+    return new GetCurrentLocation(mapDataRepository, threadExecutor, postExecutionThread);
   }
 }
