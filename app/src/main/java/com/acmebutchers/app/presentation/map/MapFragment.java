@@ -14,6 +14,7 @@ import android.view.ViewGroup;
 
 import com.acmebutchers.app.R;
 import com.acmebutchers.app.common.di.components.MainComponent;
+import com.acmebutchers.app.common.util.UIUtils;
 import com.acmebutchers.app.domain.Place;
 import com.acmebutchers.app.presentation.base.BaseFragment;
 import com.google.android.gms.maps.GoogleMap;
@@ -100,7 +101,7 @@ public class MapFragment extends BaseFragment implements MapMvpView, OnMapReadyC
 
   @Override
   public void showError(String message) {
-    showToastMessage(message);
+    UIUtils.showToastMessage(context(), message);
   }
 
   private void refreshMap() {

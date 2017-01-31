@@ -11,8 +11,8 @@ import android.widget.ScrollView;
 
 import com.acmebutchers.app.R;
 import com.acmebutchers.app.common.di.components.MainComponent;
+import com.acmebutchers.app.common.util.UIUtils;
 import com.acmebutchers.app.presentation.base.BaseFragment;
-import com.bumptech.glide.Glide;
 
 import java.util.List;
 
@@ -115,7 +115,7 @@ public class MainFragment extends BaseFragment implements MainMvpView {
 
   @Override
   public void showError(String message) {
-    showToastMessage(message);
+    UIUtils.showToastMessage(context(), message);
   }
 
   @OnClick(R.id.bt_retry)
@@ -131,21 +131,6 @@ public class MainFragment extends BaseFragment implements MainMvpView {
     mainPresenter.initialize();
   }
 
-  /**
-   * Used to load images in a view with Glide
-   *
-   * @param view the image view
-   * @param url  the url of the image
-   */
-  private void loadImage(ImageView view, String url) {
-    Glide.with(this)
-        .load(url)
-        .centerCrop()
-        .placeholder(R.color.bg_light_grey)
-        .crossFade()
-        .into(view);
-  }
-
   @Override
   public void displayHomeImages(List<String> imageUrls) {
     if (imageUrls == null || imageUrls.isEmpty() || imageUrls.size() < TOTAL_NUM_IMAGES) {
@@ -153,10 +138,10 @@ public class MainFragment extends BaseFragment implements MainMvpView {
     } else {
       hideRetry();
       // Load images
-      loadImage(qualityImageView, imageUrls.get(0));
-      loadImage(serviceImageView, imageUrls.get(1));
-      loadImage(restorationImageView, imageUrls.get(2));
-      loadImage(butcherImageView, imageUrls.get(3));
+      UIUtils.loadImageUrl(context(), qualityImageView, imageUrls.get(0));
+      UIUtils.loadImageUrl(context(), serviceImageView, imageUrls.get(1));
+      UIUtils.loadImageUrl(context(), restorationImageView, imageUrls.get(2));
+      UIUtils.loadImageUrl(context(), butcherImageView, imageUrls.get(3));
     }
   }
 
