@@ -36,7 +36,8 @@ public class MapDataRepository implements MapRepository {
     this.googleApiService = googleApiService;
   }
 
-  private Observable<LocationEntity> getLocation() {
+  @Override
+  public Observable<LocationEntity> getLocation() {
     ReactiveLocationProvider locationProvider = new ReactiveLocationProvider(context);
     return locationProvider.getLastKnownLocation()
         .map(new Func1<Location, LocationEntity>() {
