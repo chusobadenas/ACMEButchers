@@ -40,4 +40,5 @@
 
   <!-- Tweets -->
   <string name="tweets_empty">No tweets</string>
+  <string name="tweets_avatar_description" translatable="false">Avatar</string>
 </resources>
