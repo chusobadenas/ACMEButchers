@@ -16,11 +16,8 @@
       android:paddingTop="@dimen/default_horizontal_margin">
 
     <TextView
-        style="@style/MyAppTheme.TextViewTitle"
-        android:text="@string/main_intro_title"/>
-
-    <TextView
         style="@style/MyAppTheme.TextViewBlock"
+        android:textSize="16sp"
         android:text="@string/main_intro_description"/>
 
     <TextView
@@ -50,7 +47,7 @@
         android:contentDescription="@string/main_quality_description"/>
 
     <TextView
-        style="@style/MyAppTheme.TextViewBlock"
+        style="@style/MyAppTheme.TextViewFooterBlock"
         android:text="@string/main_quality_description"/>
 
     <TextView
@@ -64,7 +61,7 @@
         android:contentDescription="@string/main_service_description"/>
 
     <TextView
-        style="@style/MyAppTheme.TextViewBlock"
+        style="@style/MyAppTheme.TextViewFooterBlock"
         android:text="@string/main_service_description"/>
 
     <TextView
@@ -78,7 +75,7 @@
         android:contentDescription="@string/main_restoration_description"/>
 
     <TextView
-        style="@style/MyAppTheme.TextViewBlock"
+        style="@style/MyAppTheme.TextViewFooterBlock"
         android:text="@string/main_restoration_description"/>
 
     <TextView
@@ -92,7 +89,7 @@
         android:contentDescription="@string/main_butcher_description"/>
 
     <TextView
-        style="@style/MyAppTheme.TextViewBlock"
+        style="@style/MyAppTheme.TextViewFooterBlock"
         android:text="@string/main_butcher_description"/>
   </LinearLayout>
 </ScrollView>
