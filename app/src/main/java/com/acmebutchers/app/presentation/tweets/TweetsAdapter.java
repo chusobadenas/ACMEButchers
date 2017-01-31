@@ -17,6 +17,8 @@ import java.util.List;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import twitter4j.Status;
+import twitter4j.User;
+import twitter4j.util.TimeSpanConverter;
 
 public class TweetsAdapter extends BaseAdapter {
 
@@ -60,10 +62,13 @@ public class TweetsAdapter extends BaseAdapter {
 
     // Get item
     Status tweet = getItem(position);
+    User user = tweet.getUser();
 
     // Display elements
-    UIUtils.loadImageUrl(context, holder.avatarImageView, tweet.getUser().getProfileImageURL());
-    holder.nameTextView.setText(tweet.getUser().getScreenName());
+    UIUtils.loadImageUrl(context, holder.avatarImageView, user.getProfileImageURL());
+    holder.fullNameTextView.setText(user.getScreenName());
+    String tweetTime = new TimeSpanConverter().toTimeSpanString(tweet.getCreatedAt());
+    holder.nameTextView.setText(user.getName() + " · " + tweetTime);
     holder.statusTextView.setText(tweet.getText());
 
     return currentView;
@@ -73,6 +78,8 @@ public class TweetsAdapter extends BaseAdapter {
 
     @BindView(R.id.tweet_avatar)
     ImageView avatarImageView;
+    @BindView(R.id.tweet_full_name)
+    TextView fullNameTextView;
     @BindView(R.id.tweet_name)
     TextView nameTextView;
     @BindView(R.id.tweet_status)
