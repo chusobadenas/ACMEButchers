@@ -15,8 +15,10 @@ import android.view.ViewGroup;
 import com.acmebutchers.app.R;
 import com.acmebutchers.app.common.di.components.MainComponent;
 import com.acmebutchers.app.common.util.UIUtils;
+import com.acmebutchers.app.data.entity.LocationEntity;
 import com.acmebutchers.app.domain.Place;
 import com.acmebutchers.app.presentation.base.BaseFragment;
+import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
@@ -33,6 +35,7 @@ import butterknife.Unbinder;
 public class MapFragment extends BaseFragment implements MapMvpView, OnMapReadyCallback {
 
   private static final int REQUEST_LOCATION = 1;
+  private static final float ZOOM = 14.0f;
 
   @Inject
   MapPresenter mapPresenter;
@@ -141,6 +144,17 @@ public class MapFragment extends BaseFragment implements MapMvpView, OnMapReadyC
           .position(new LatLng(shop.location().latitude(), shop.location().longitude()))
           .title(shop.name());
       googleMap.addMarker(marker);
+    }
+
+    // Center map
+    mapPresenter.centerMap();
+  }
+
+  @Override
+  public void centerMap(LocationEntity location) {
+    if (location != null) {
+      LatLng latLng = new LatLng(location.latitude(), location.longitude());
+      googleMap.animateCamera(CameraUpdateFactory.newLatLngZoom(latLng, ZOOM));
     }
   }
 
