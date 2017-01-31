@@ -66,9 +66,9 @@ public class TweetsAdapter extends BaseAdapter {
 
     // Display elements
     UIUtils.loadImageUrl(context, holder.avatarImageView, user.getProfileImageURL());
-    holder.fullNameTextView.setText(user.getScreenName());
+    holder.fullNameTextView.setText(user.getName());
     String tweetTime = new TimeSpanConverter().toTimeSpanString(tweet.getCreatedAt());
-    holder.nameTextView.setText(user.getName() + " · " + tweetTime);
+    holder.nameTextView.setText('@' + user.getScreenName() + " · " + tweetTime);
     holder.statusTextView.setText(tweet.getText());
 
     return currentView;
