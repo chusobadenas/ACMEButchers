@@ -6,15 +6,18 @@ import android.support.v4.app.ListFragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Toast;
+import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 
 import com.acmebutchers.app.R;
+import com.acmebutchers.app.common.util.UIUtils;
 import com.acmebutchers.app.presentation.main.MainActivity;
 
 import java.util.List;
 
 import javax.inject.Inject;
 
+import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.Unbinder;
 import twitter4j.Status;
@@ -23,6 +26,11 @@ public class TweetsFragment extends ListFragment implements TweetsMvpView {
 
   @Inject
   TweetsPresenter tweetsPresenter;
+
+  @BindView(R.id.content_tweets)
+  LinearLayout tweetsView;
+  @BindView(R.id.rl_progress)
+  RelativeLayout progressView;
 
   private Unbinder unbinder;
 
@@ -67,12 +75,14 @@ public class TweetsFragment extends ListFragment implements TweetsMvpView {
 
   @Override
   public void showLoading() {
-    // Nothing to do
+    tweetsView.setVisibility(View.GONE);
+    progressView.setVisibility(View.VISIBLE);
   }
 
   @Override
   public void hideLoading() {
-    // Nothing to do
+    progressView.setVisibility(View.GONE);
+    tweetsView.setVisibility(View.VISIBLE);
   }
 
   @Override
@@ -87,7 +97,7 @@ public class TweetsFragment extends ListFragment implements TweetsMvpView {
 
   @Override
   public void showError(String message) {
-    Toast.makeText(getActivity(), message, Toast.LENGTH_SHORT).show();
+    UIUtils.showToastMessage(context(), message);
   }
 
   private void loadTweets() {
@@ -96,10 +106,9 @@ public class TweetsFragment extends ListFragment implements TweetsMvpView {
 
   @Override
   public void showTweets(List<Status> tweets) {
-    // TODO: Create adapter
-
     // Set tweets to list
-    //setListAdapter(adapter);
+    TweetsAdapter adapter = new TweetsAdapter(context(), tweets);
+    setListAdapter(adapter);
   }
 
   @Override

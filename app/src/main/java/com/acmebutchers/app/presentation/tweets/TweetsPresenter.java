@@ -36,6 +36,7 @@ public class TweetsPresenter extends BasePresenter<TweetsMvpView> {
    */
   void loadTweets() {
     checkViewAttached();
+    getMvpView().showLoading();
     getTweets();
   }
 
@@ -54,12 +55,15 @@ public class TweetsPresenter extends BasePresenter<TweetsMvpView> {
 
       // Show error
       Timber.e(errorBundle.getException(), "There was an error loading the tweets");
+      mvpView.hideLoading();
       showErrorMessage(errorBundle);
     }
 
     @Override
     public void onNext(List<Status> tweets) {
-      getMvpView().showTweets(tweets);
+      TweetsMvpView mvpView = getMvpView();
+      mvpView.hideLoading();
+      mvpView.showTweets(tweets);
     }
   }
 }
