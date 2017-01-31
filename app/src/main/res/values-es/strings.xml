@@ -27,4 +27,5 @@
     tradicionales.</string>
   <string name="error_loading_shops">Ha ocurrido un error mientras se cargaban las tiendas</string>
   <string name="tweets_empty">No hay tweets</string>
+  <string name="error_loading_tweets">Ha ocurrido un error mientras se cargaban los tweets</string>
 </resources>
