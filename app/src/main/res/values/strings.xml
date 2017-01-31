@@ -9,7 +9,6 @@
   <string name="error_loading_tweets">There was an error loading the tweets</string>
 
   <!-- Main -->
-  <string name="main_intro_title">INTRO</string>
   <string name="main_intro_description">At ACME butchers we offer you the best meats, sausages
     and prepared dishes.</string>
   <string name="main_delivery_title">Home delivery</string>
