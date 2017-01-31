@@ -10,13 +10,14 @@ import android.widget.Toast;
 
 import com.acmebutchers.app.R;
 import com.acmebutchers.app.presentation.main.MainActivity;
-import com.twitter.sdk.android.tweetui.SearchTimeline;
-import com.twitter.sdk.android.tweetui.TweetTimelineListAdapter;
+
+import java.util.List;
 
 import javax.inject.Inject;
 
 import butterknife.ButterKnife;
 import butterknife.Unbinder;
+import twitter4j.Status;
 
 public class TweetsFragment extends ListFragment implements TweetsMvpView {
 
@@ -94,14 +95,11 @@ public class TweetsFragment extends ListFragment implements TweetsMvpView {
   }
 
   @Override
-  public void showTweets(SearchTimeline timeline) {
-    // Create adapter
-    TweetTimelineListAdapter adapter = new TweetTimelineListAdapter.Builder(context())
-        .setTimeline(timeline)
-        .build();
+  public void showTweets(List<Status> tweets) {
+    // TODO: Create adapter
 
     // Set tweets to list
-    setListAdapter(adapter);
+    //setListAdapter(adapter);
   }
 
   @Override

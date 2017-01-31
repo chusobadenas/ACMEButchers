@@ -1,14 +1,17 @@
 package com.acmebutchers.app.presentation.tweets;
 
 import com.acmebutchers.app.presentation.base.MvpView;
-import com.twitter.sdk.android.tweetui.SearchTimeline;
+
+import java.util.List;
+
+import twitter4j.Status;
 
 interface TweetsMvpView extends MvpView {
 
   /**
-   * Shows nearby tweets related to meat is healthy
+   * Shows nearby tweets related to meat
    *
-   * @param timeline Twitter timeline
+   * @param tweets the list of tweets
    */
-  void showTweets(SearchTimeline timeline);
+  void showTweets(List<Status> tweets);
 }
