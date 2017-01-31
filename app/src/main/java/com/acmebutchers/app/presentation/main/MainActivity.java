@@ -79,18 +79,21 @@ public class MainActivity extends BaseActivity implements HasComponent<MainCompo
           case R.id.home:
             // Navigate to home
             if (!(currentFragment instanceof MainFragment)) {
+              setTitle(R.string.app_name);
               replaceFragment(R.id.fragmentContainer, MainFragment.newInstance());
             }
             break;
           case R.id.map:
             // Navigate to map
             if (!(currentFragment instanceof MapFragment)) {
+              setTitle(R.string.map);
               replaceFragment(R.id.fragmentContainer, MapFragment.newInstance());
             }
             break;
           case R.id.tweets:
             // Navigate to tweets
             if (!(currentFragment instanceof TweetsFragment)) {
+              setTitle(R.string.tweets);
               replaceFragment(R.id.fragmentContainer, TweetsFragment.newInstance());
             }
             break;
