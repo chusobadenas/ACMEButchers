@@ -26,6 +26,8 @@
   <string name="main_butcher_title">Butcher shop</string>
   <string name="main_butcher_description">The best pieces of Iberian ham and traditional
     sausages.</string>
+  <string name="permission_location_rationale">Location permission is required to display it in the map.</string>
+  <string name="permission_location_not_granted">Location permission not granted.</string>
 
   <!-- Navigation -->
   <string name="open_drawer">Open</string>
