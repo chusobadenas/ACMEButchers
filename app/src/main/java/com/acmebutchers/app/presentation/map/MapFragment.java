@@ -6,7 +6,7 @@ import android.content.Context;
 import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
-import android.support.v4.app.ActivityCompat;
+import android.support.design.widget.Snackbar;
 import android.support.v4.content.ContextCompat;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -65,9 +65,9 @@ public class MapFragment extends BaseFragment implements MapMvpView, OnMapReadyC
   }
 
   @Override
-  public void onResume() {
-    super.onResume();
-    refreshMap();
+  public void onStart() {
+    super.onStart();
+    askForPermissions();
   }
 
   @Override
@@ -109,26 +109,37 @@ public class MapFragment extends BaseFragment implements MapMvpView, OnMapReadyC
 
   private void refreshMap() {
     // Load map
-    SupportMapFragment mapFragment = (SupportMapFragment) getChildFragmentManager()
-        .findFragmentById(R.id.map_fragment);
+    SupportMapFragment mapFragment = (SupportMapFragment) getChildFragmentManager().findFragmentById(R.id.map_fragment);
     if (mapFragment != null) {
       mapFragment.getMapAsync(this);
     }
   }
 
   /**
-   * Shows the location button in the map
+   * Shows the user location in the map
    */
-  private void showCurrentLocation() {
+  @SuppressLint("MissingPermission")
+  private void displayMapLocation() {
+    googleMap.setMyLocationEnabled(true);
+  }
+
+  /**
+   * Request the location permission
+   */
+  private void requestLocationPermission() {
+    requestPermissions(new String[]{Manifest.permission.ACCESS_FINE_LOCATION}, REQUEST_LOCATION);
+  }
+
+  /**
+   * Ask for permissions
+   */
+  private void askForPermissions() {
     // Check location permission
-    if (ContextCompat.checkSelfPermission(getActivity(), Manifest.permission.ACCESS_FINE_LOCATION)
-        == PackageManager.PERMISSION_GRANTED) {
-      googleMap.setMyLocationEnabled(true);
-    }
-    // Request location permission
-    else {
-      ActivityCompat.requestPermissions(getActivity(), new String[]{Manifest.permission
-          .ACCESS_FINE_LOCATION}, REQUEST_LOCATION);
+    if (ContextCompat.checkSelfPermission(getActivity(), Manifest.permission.ACCESS_FINE_LOCATION) == PackageManager
+        .PERMISSION_GRANTED) {
+      refreshMap();
+    } else {
+      requestLocationPermission();
     }
   }
 
@@ -162,24 +173,45 @@ public class MapFragment extends BaseFragment implements MapMvpView, OnMapReadyC
   public void onMapReady(GoogleMap googleMap) {
     this.googleMap = googleMap;
 
-    // Show location in map
-    showCurrentLocation();
+    // Show current location
+    displayMapLocation();
 
     // Load butcher shops
     loadButcherShops();
   }
 
   /**
+   * Shows a dialog to request location permission
+   */
+  private void showDialog2RequestLocation() {
+    if (shouldShowRequestPermissionRationale(Manifest.permission.ACCESS_FINE_LOCATION)) {
+      // Provide an additional rationale to the user if the permission was not granted
+      Snackbar.make(getView(), R.string.permission_location_rationale, Snackbar.LENGTH_INDEFINITE)
+          .setAction(android.R.string.ok, new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+              requestLocationPermission();
+            }
+          }).show();
+    } else {
+      // User does not want to request permission again
+      Snackbar.make(getView(), R.string.permission_location_not_granted, Snackbar.LENGTH_SHORT).show();
+    }
+  }
+
+  /**
    * {@inheritDoc}
    */
   @Override
-  @SuppressLint("MissingPermission")
-  public final void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions,
-                                               @NonNull int[] grantResults) {
-    // Permission granted
-    if (requestCode == REQUEST_LOCATION && grantResults.length == 1 && grantResults[0] ==
-        PackageManager.PERMISSION_GRANTED) {
-      googleMap.setMyLocationEnabled(true);
+  public final void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
+    if (requestCode == REQUEST_LOCATION && grantResults.length == 1) {
+      if (grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+        refreshMap();
+      }
+      // Permission NOT granted
+      else {
+        showDialog2RequestLocation();
+      }
     } else {
       super.onRequestPermissionsResult(requestCode, permissions, grantResults);
     }
