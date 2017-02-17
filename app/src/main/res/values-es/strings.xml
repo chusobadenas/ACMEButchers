@@ -27,6 +27,7 @@
   <string name="error_loading_shops">Ha ocurrido un error mientras se cargaban las tiendas</string>
   <string name="tweets_empty">No hay tweets</string>
   <string name="error_loading_tweets">Ha ocurrido un error mientras se cargaban los tweets</string>
-  <string name="permission_location_rationale">Se necesita el permiso de localización para mostrarla en el mapa.</string>
+  <string name="permission_location_rationale">Se necesita el permiso de localización.</string>
   <string name="permission_location_not_granted">Permiso de localización no concedido.</string>
+  <string name="enable_location">La localización debe estar activa.</string>
 </resources>
