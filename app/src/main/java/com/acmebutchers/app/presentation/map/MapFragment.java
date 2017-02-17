@@ -14,6 +14,7 @@ import android.view.ViewGroup;
 
 import com.acmebutchers.app.R;
 import com.acmebutchers.app.common.di.components.MainComponent;
+import com.acmebutchers.app.common.util.LocationUtils;
 import com.acmebutchers.app.common.util.UIUtils;
 import com.acmebutchers.app.data.entity.LocationEntity;
 import com.acmebutchers.app.domain.Place;
@@ -120,7 +121,12 @@ public class MapFragment extends BaseFragment implements MapMvpView, OnMapReadyC
    */
   @SuppressLint("MissingPermission")
   private void displayMapLocation() {
-    googleMap.setMyLocationEnabled(true);
+    if (LocationUtils.isLocationEnabled(context())) {
+      googleMap.setMyLocationEnabled(true);
+    } else {
+      // Show settings to enable location
+      LocationUtils.showLocationSettings(context(), getView());
+    }
   }
 
   /**

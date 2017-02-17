@@ -10,6 +10,7 @@ import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 
 import com.acmebutchers.app.R;
+import com.acmebutchers.app.common.util.LocationUtils;
 import com.acmebutchers.app.common.util.UIUtils;
 import com.acmebutchers.app.presentation.main.MainActivity;
 
@@ -101,7 +102,11 @@ public class TweetsFragment extends ListFragment implements TweetsMvpView {
   }
 
   private void loadTweets() {
-    tweetsPresenter.loadTweets();
+    if (LocationUtils.isLocationEnabled(context())) {
+      tweetsPresenter.loadTweets();
+    } else {
+      LocationUtils.showLocationSettings(context(), getView());
+    }
   }
 
   @Override
